@@ -1,0 +1,286 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION["user_id"])) {
+    
+    $mysqli = require __DIR__ . "/database.php";
+    
+    $sql = "SELECT * FROM user
+            WHERE id = {$_SESSION["user_id"]}";
+            
+    $result = $mysqli->query($sql);
+    
+    $user = $result->fetch_assoc();
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv='cache-control' content='no-cache'> 
+    <meta http-equiv='expires' content='0'> 
+    <meta http-equiv='pragma' content='no-cache'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/213d0dc38c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/icon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4GuysCoffee - Give it a Shot!</title>
+</head>
+<body>
+    <div id="home"></div>
+    <header>
+        <div class="navbar">
+            <div class="logo"><a href="#home">4GC <i class="fa-solid fa-mug-hot"></i></a></div>
+            <ul class="links">
+                <li><a href="menu.pdf" download>Menu</a></li>
+                <li><a href="#explore">Explore</a></li>
+                <li><a href="#locations">Locations</a></li>
+                <li><a href="#">Reservation</a></li>
+                <li><a href="#photos">Photos</a></li>
+                <li>
+                    <span id="userid"><?php if (isset($user)): ?>
+                
+                    <?= htmlspecialchars($user["username"])?></span><span>| <a href="logout.php">Log out</a></span>
+                    
+                    <?php else: ?>
+                    
+                    <a href="login.php">Log in</a> / <a href="register.html">Sign up</a>
+                    
+                    <?php endif; ?>
+                </li>
+                <!-- <li><a href="login.php">Login</a></li> -->
+            </ul>
+            <a href="http://wa.me/6587796567/" class="action_btn">Contact     <i class="fa-brands fa-whatsapp"></i></a>
+            <div class="toggle_btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+
+        <div class="dropdown_menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="menu.pdf" download>Menu</a></li>
+            <li><a href="#explore">Explore</a></li>
+            <li><a href="#locations">Locations</a></li>
+            <li><a href="#">Reservation</a></li>
+            <li><a href="#photos">Photos</a></li>
+            <li>
+                <span id="userid"><?php if (isset($user)): ?>
+                
+                <?= htmlspecialchars($user["username"])?></span><span>| <a href="logout.php">Log out</a></span>
+                
+                <?php else: ?>
+                
+                <a href="login.php">Log in</a> / <a href="register.html">Sign up</a>
+                
+                <?php endif; ?>
+            </li>
+            <!-- <li><a href="login.php">Login</a></li> -->
+            <li><a href="http://wa.me/6587796567/">Contact     <i class="fa-brands fa-whatsapp"></i></a></li>
+        </div>
+    </header>
+        <div class="testlogo">
+            <img id="imgtest" src="logo.png" alt="4GuysCoffee Logo">
+        </div>
+        
+        
+        <div class="main-container">
+            <div id="typing-container">
+                <h1>4<span class="auto-type"></span></h1>
+            </div>
+            
+            <div id="socialLinks">
+                <!-- <a class="fa-brands fa-instagram" href="https://www.instagram.com/4GuysCoffee" target="_blank"></a> -->
+                <!-- <a class="fa-brands fa-linkedin" href="https://www.linkedin.com/in/4GuysCoffee/" target="_blank"></a> -->
+                <a class="fa-brands fa-github" href="https://github.com/4GuysCoffee/4GuysCoffee.github.io" target="_blank"></a>
+                <a class="fa-regular fa-envelope" href="mailto:vttp.4GuysCoffee@gmail.com" target="_blank"></a>
+                <!-- <a class="fa-regular fa-file-code" href="https://replit.com/@ShafeeqAbdul" target="_blank" alt="Projects"></a> -->
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        
+        <div id="explore">
+            <br>
+            <br>
+            <br>
+            <h3>
+                Explore
+            </h3>
+            <div class="blogEntry">
+                <h3>Beans & Merch Brewing Soon: <br> Online Shopping Coming in Q3</h3>
+                <h4>
+                <div id="time">
+                    26 Jan 2024 | 13:34:21
+                </div>
+                </h4>
+                <div class="blogContent">
+                    Calling all coffee enthusiasts and merchandise lovers!  We're brewing up something special for you... an online shopping experience! <br>
+
+                    That's right, in Q3 of this year, you'll be able to purchase our premium coffee beans and unique merchandise from the comfort of your own home. No more waiting in line, just pure coffee convenience! <br>
+
+                    In the meantime, why not visit us at one of our outlets and branches? We're always brewing fresh coffee and serving up smiles. Come say hi and enjoy the coffee shop experience you love. <br>
+
+                    Stay tuned for more updates as we get closer to launching our online shop! We can't wait to share the beans (and brews) with you virtually. <br>
+                </div>
+            </div>
+            
+            <div class="blogEntry">
+                <h3>Brewing Up a New Connection: <br> Our Website Launches!</h3>
+                <h4>
+                    <div id="time">
+                        19 Nov 2023 | 12:27:55
+                    </div>
+                </h4>
+                <div class="blogContent">
+                    This virtual space has been brewing for quite some time, and we're thrilled to finally invite you in for a digital cup of joe. ☕ <span> </span> Here, you'll find all the latest news, events, and updates about your favorite coffee shop. Explore our menu, discover our story, and even connect with our passionate team. <br>
+
+                    So, bookmark the page, brew a pot, and get ready to explore! We can't wait to connect with you online.
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div id="locations">
+            <br>
+            <br>
+            <br>
+            <h3>
+                Our Locations
+            </h3>
+            <div class="blogEntry">
+                <!-- <h2>#2</h2> -->
+                <h4>
+                <div id="time">
+                    Central | Orchard <br>
+                    East | Jewel, Paya Lebar, Tampines <br>
+                    South | Sentosa <br>
+                    West | Jurong East <br>
+                </div>
+                </h4>
+                <!-- <div class="blogContent">
+                    // PLACE UNDER CONSTRUCTION
+                </div>
+            </div>
+            
+            <div class="blogEntry">
+                <h2>#1</h2>
+                <h4>
+                    <div id="time">
+                        10 May 2023 | 12:27:55
+                    </div>
+                </h4>
+                <div class="blogContent">
+                    // PLACE UNDER CONSTRUCTION
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br> -->
+        <br>
+        <div id="photos">
+            <br>
+            <br>
+            <br>
+            <h3>Our Cafe</h3>
+            <img src="https://live.staticflickr.com/65535/53477559994_bc5b72bc2d_k.jpg"><img
+            src="https://live.staticflickr.com/65535/53476339242_711da7103b_k.jpg"><img
+            src="https://live.staticflickr.com/65535/53477654560_0c28452d7d_k.jpg">
+    
+            <img src="https://live.staticflickr.com/65535/53477654660_3f46e429b4_k.jpg"><img
+            src="https://live.staticflickr.com/65535/53477560194_be79814d3f_k.jpg"><img
+            src="https://live.staticflickr.com/65535/53477387168_555518eb22_k.jpg">
+    
+            <img src="https://live.staticflickr.com/65535/53477387163_052e731bfd_k.jpg"><img
+            src="https://live.staticflickr.com/65535/53476339617_8d6c6938fd_k.jpg"><img
+            src="https://live.staticflickr.com/65535/53476339642_0e5761dd26_k.jpg">
+    
+            <img src="https://live.staticflickr.com/65535/53477560359_cf18682fc3_k.jpg"><img
+            src="https://live.staticflickr.com/65535/53477387168_555518eb22_k.jpg"><img
+            src="https://live.staticflickr.com/65535/53476339242_711da7103b_k.jpg">
+        
+            <img src="https://live.staticflickr.com/65535/53477560194_be79814d3f_k.jpg"><img
+            src="https://live.staticflickr.com/65535/53476339642_0e5761dd26_k.jpg"><img
+            src="https://live.staticflickr.com/65535/53477654560_0c28452d7d_k.jpg">
+    
+            <img src="https://live.staticflickr.com/65535/53477560359_cf18682fc3_k.jpg"><img
+            src="https://live.staticflickr.com/65535/53477387163_052e731bfd_k.jpg"><img
+            src="https://live.staticflickr.com/65535/53477654660_3f46e429b4_k.jpg">
+        </div>
+        <br>
+        <br>
+        <br>
+        <div id="feedback">
+            <h4>Feedback</h4>
+            <form action="" method="">
+                <!-- <label for="fname">First Name:</label><br> -->
+                <textarea placeholder="We'd love to hear from you!" name="feedback" id="feedback" cols="30" rows="10"></textarea>
+                <!-- <input type="text" placeholder="We'd love to hear from you!" name="fname" id="fname"><br> -->
+                <br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <br>
+        <br>
+        <footer>
+            <span>&copy;</span> 4GuysCoffee 2024
+        </footer>
+    </div>
+    <script>
+        const toggleBtn = document.querySelector('.toggle_btn')
+        const toggleBtnIcon = document.querySelector('.toggle_btn i')
+        const dropDownMenu = document.querySelector('.dropdown_menu')
+
+        toggleBtn.onclick = function() {
+            dropDownMenu.classList.toggle('open');
+            const isOpen = dropDownMenu.classList.contains('open');
+
+            toggleBtnIcon.classList = isOpen
+                ? 'fa-solid fa-xmark'
+                : 'fa-solid fa-bars'
+        }
+
+        document.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+
+            if (window.scrollY > 220) {
+                header.classList.add('scrolled');
+            }
+            else {
+                header.classList.remove('scrolled');
+            }
+        })
+    </script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <!-- Courtesy of mattboldt: https://github.com/mattboldt/typed.js/ -->
+    <script>
+        let typed = new Typed(".auto-type", {
+            strings: ["GuysCoffee", " You", " Everyone"],
+            typeSpeed: 150,
+            backSpeed: 50,
+            loop: true
+        })
+    </script>
+</body>
+</html>
